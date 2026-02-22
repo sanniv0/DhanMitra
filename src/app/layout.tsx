@@ -1,0 +1,31 @@
+import type { Metadata } from 'next';
+import './globals.css';
+import { AppShell } from '@/components/layout/app-shell';
+import { Toaster } from '@/components/ui/toaster';
+
+export const metadata: Metadata = {
+  title: 'DhanMitra - Your Personal Finance Guide',
+  description: 'Simplify your finances and start your investment journey with DhanMitra.',
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" />
+      </head>
+      <body className="font-body antialiased">
+        <AppShell>
+          {children}
+        </AppShell>
+        <Toaster />
+      </body>
+    </html>
+  );
+}
