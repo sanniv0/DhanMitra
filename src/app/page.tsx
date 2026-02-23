@@ -12,7 +12,7 @@ export default function HomePage() {
   return (
     <div className="space-y-24">
       {/* Hero Section */}
-      <section className="relative -mx-4 -mt-4 flex min-h-[80vh] items-center justify-center overflow-hidden md:-mx-6 lg:-mx-8">
+      <section className="relative -mx-4 -mt-4 flex min-h-[60vh] items-center justify-center overflow-hidden md:-mx-6 lg:-mx-8">
         {/* Background Image with Blur */}
         <div className="absolute inset-0 z-0 scale-110 blur-md grayscale-[0.2] opacity-40">
           <Image
@@ -26,23 +26,23 @@ export default function HomePage() {
 
         {/* Hero Card */}
         <div className="relative z-10 w-full max-w-4xl px-4">
-          <div className="rounded-[3rem] border border-white/40 bg-white/60 p-12 text-center shadow-2xl backdrop-blur-xl md:p-20">
-            <h1 className="font-headline text-5xl font-bold tracking-tight text-primary sm:text-6xl md:text-7xl lg:text-8xl">
+          <div className="rounded-[3rem] border border-white/40 bg-white/60 p-8 text-center shadow-2xl backdrop-blur-xl md:p-14">
+            <h1 className="font-headline text-4xl font-bold tracking-tight text-primary sm:text-5xl md:text-6xl lg:text-7xl">
               Your Personal Finance Guide
             </h1>
-            <p className="mt-8 max-w-2xl mx-auto text-lg text-foreground/80 md:text-xl lg:text-2xl leading-relaxed">
+            <p className="mt-6 max-w-2xl mx-auto text-base text-foreground/80 md:text-lg lg:text-xl leading-relaxed">
               Simplify your finances and start your investment journey with Dhan Mitra. We provide the tools and knowledge to build your future, one step at a time.
             </p>
-            <div className="mt-12 flex flex-col justify-center gap-4 sm:flex-row lg:gap-6">
-              <Button asChild size="lg" className="h-14 rounded-xl px-10 text-lg font-semibold shadow-lg transition-transform hover:scale-105 active:scale-95">
+            <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row lg:gap-6">
+              <Button asChild size="lg" className="h-12 rounded-xl px-8 text-base font-semibold shadow-lg transition-transform hover:scale-105 active:scale-95">
                 <Link href="/plan-generator">Generate Your Plan</Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="h-14 rounded-xl border-2 border-primary/20 bg-white/40 px-10 text-lg font-semibold shadow-sm transition-transform hover:scale-105 active:scale-95">
+              <Button asChild variant="outline" size="lg" className="h-12 rounded-xl border-2 border-primary/20 bg-white/40 px-8 text-base font-semibold shadow-sm transition-transform hover:scale-105 active:scale-95">
                 <Link href="/learn">Learn About Investing</Link>
               </Button>
             </div>
 
-            <p className="mt-12 text-sm font-medium text-foreground/60 tracking-wide uppercase">
+            <p className="mt-10 text-xs font-medium text-foreground/60 tracking-wide uppercase">
               Trusted by over 3,000 users globally
             </p>
           </div>
