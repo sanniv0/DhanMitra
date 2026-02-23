@@ -73,7 +73,7 @@ export function Footer() {
 
         <div className="mt-8 border-t border-secondary-foreground/20 pt-8">
           <p className="text-center text-xs/relaxed text-secondary-foreground/60">
-            © DhanMitra {new Date().getFullYear()}. All rights reserved.
+            © Dhan Mitra {new Date().getFullYear()}. All rights reserved.
           </p>
         </div>
       </div>

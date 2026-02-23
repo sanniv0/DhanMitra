@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 import { Shield, Rabbit, Turtle } from 'lucide-react';
+import { LoadingBar } from '@/components/ui/loading-bar';
 
 type Question = {
   id: number;
@@ -47,6 +48,7 @@ type RiskProfile = 'Conservative' | 'Moderate' | 'Aggressive';
 
 export function RiskAssessmentQuiz() {
   const [answers, setAnswers] = useState<Record<number, number>>({});
+  const [isCalculating, setIsCalculating] = useState(false);
   const [result, setResult] = useState<RiskProfile | null>(null);
 
   const handleAnswerChange = (questionId: number, value: string) => {
@@ -54,48 +56,64 @@ export function RiskAssessmentQuiz() {
   };
 
   const calculateResult = () => {
-    const totalScore = Object.values(answers).reduce((acc, val) => acc + val, 0);
-    if (totalScore <= 4) {
-      setResult('Conservative');
-    } else if (totalScore <= 7) {
-      setResult('Moderate');
-    } else {
-      setResult('Aggressive');
-    }
+    setIsCalculating(true);
+
+    // Simulate complex calculation for better UX
+    setTimeout(() => {
+      const totalScore = Object.values(answers).reduce((acc, val) => acc + val, 0);
+      if (totalScore <= 4) {
+        setResult('Conservative');
+      } else if (totalScore <= 7) {
+        setResult('Moderate');
+      } else {
+        setResult('Aggressive');
+      }
+      setIsCalculating(false);
+    }, 1500);
   };
-  
+
   const resetQuiz = () => {
     setAnswers({});
     setResult(null);
   };
-  
+
   if (result) {
     const profiles = {
-        Conservative: {
-            icon: <Turtle className="w-16 h-16 text-primary" />,
-            description: "You prefer safety and capital preservation. You're comfortable with lower, but more predictable returns."
-        },
-        Moderate: {
-            icon: <Shield className="w-16 h-16 text-primary" />,
-            description: "You're willing to take on some risk for better returns, but still value a balanced approach to investing."
-        },
-        Aggressive: {
-            icon: <Rabbit className="w-16 h-16 text-primary" />,
-            description: "You are comfortable with higher risk for the potential of high returns. You understand that markets can be volatile."
-        }
+      Conservative: {
+        icon: <Turtle className="w-16 h-16 text-primary" />,
+        description: "You prefer safety and capital preservation. You're comfortable with lower, but more predictable returns."
+      },
+      Moderate: {
+        icon: <Shield className="w-16 h-16 text-primary" />,
+        description: "You're willing to take on some risk for better returns, but still value a balanced approach to investing."
+      },
+      Aggressive: {
+        icon: <Rabbit className="w-16 h-16 text-primary" />,
+        description: "You are comfortable with higher risk for the potential of high returns. You understand that markets can be volatile."
+      }
     }
     return (
       <Card>
         <CardHeader className="items-center text-center p-8">
-            {profiles[result].icon}
-            <CardTitle className="text-3xl font-headline mt-4">Your Risk Profile is: {result}</CardTitle>
-            <CardDescription className="text-base max-w-md mt-2">{profiles[result].description}</CardDescription>
+          {profiles[result].icon}
+          <CardTitle className="text-3xl font-headline mt-4">Your Risk Profile is: {result}</CardTitle>
+          <CardDescription className="text-base max-w-md mt-2">{profiles[result].description}</CardDescription>
         </CardHeader>
         <CardFooter className="justify-center pt-0 pb-8">
           <Button onClick={resetQuiz}>Take Quiz Again</Button>
         </CardFooter>
       </Card>
     );
+  }
+
+  if (isCalculating) {
+    return (
+      <Card className="p-12 text-center space-y-6">
+        <h3 className="text-2xl font-bold font-headline">Calculating Your Profile</h3>
+        <p className="text-muted-foreground">Dhan Mitra is assessing your risk tolerances based on your answers...</p>
+        <LoadingBar message="Analyzing risk factors..." />
+      </Card>
+    )
   }
 
   return (

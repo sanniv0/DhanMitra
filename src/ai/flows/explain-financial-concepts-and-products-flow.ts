@@ -7,8 +7,8 @@
  * - ExplainFinancialConceptsOutput - The return type for the explainFinancialConceptsAndProducts function.
  */
 
-import {ai} from '@/ai/genkit';
-import {z} from 'genkit';
+import { ai } from '@/ai/genkit';
+import { z } from 'genkit';
 
 const ExplainFinancialConceptsInputSchema = z.object({
   question: z.string().describe('The user\'s financial question.'),
@@ -45,9 +45,9 @@ export async function explainFinancialConceptsAndProducts(
 
 const explainFinancialConceptsPrompt = ai.definePrompt({
   name: 'explainFinancialConceptsPrompt',
-  input: {schema: ExplainFinancialConceptsInputSchema},
-  output: {schema: ExplainFinancialConceptsOutputSchema},
-  prompt: `You are DhanMitra, a friendly, patient, and non-judgmental financial assistant specifically for the Indian market.
+  input: { schema: ExplainFinancialConceptsInputSchema },
+  output: { schema: ExplainFinancialConceptsOutputSchema },
+  prompt: `You are Dhan Mitra, a friendly, patient, and non-judgmental financial assistant specifically for the Indian market.
 Your goal is to explain financial concepts, products, and tax-saving options in a clear, jargon-free manner, as if you are a financially savvy elder sibling or mentor.
 
 Keep the tone reassuring and empathetic. Provide culturally relevant explanations where appropriate (e.g., mentioning gold investing, LIC policies).
@@ -67,7 +67,7 @@ const explainFinancialConceptsAndProductsFlow = ai.defineFlow(
     outputSchema: ExplainFinancialConceptsOutputSchema,
   },
   async input => {
-    const {output} = await explainFinancialConceptsPrompt(input);
+    const { output } = await explainFinancialConceptsPrompt(input);
     return output!;
   }
 );

@@ -12,6 +12,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Textarea } from '@/components/ui/textarea';
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Loader2, ShoppingBag, Shield, TrendingUp, BarChart, FileText, AlertCircle } from 'lucide-react';
+import { LoadingBar } from '@/components/ui/loading-bar';
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -35,7 +36,7 @@ const getRiskIcon = (riskLevel: string) => {
 
 export default function ProductRecommenderPage() {
   const initialState: FormState = { message: '' };
-  const [state, formAction] = useActionState(getProductRecommendations, initialState);
+  const [state, formAction, isPending] = useActionState(getProductRecommendations, initialState);
 
   return (
     <div className="space-y-8">
@@ -104,10 +105,20 @@ export default function ProductRecommenderPage() {
         </Card>
 
         <div className="lg:col-span-3">
-          {!state.data && (
+          {isPending && (
+            <Card className="h-full flex flex-col items-center justify-center text-center p-8 space-y-6">
+              <div className="w-full max-w-md mx-auto">
+                <h3 className="text-2xl font-bold font-headline mb-4 text-primary">Searching Your Match</h3>
+                <p className="text-muted-foreground mb-8 text-lg">Dhan Mitra is finding the best investment products for your profile...</p>
+                <LoadingBar message="Scanning Indian markets..." />
+              </div>
+            </Card>
+          )}
+
+          {!isPending && !state.data && (
             <Card className="h-full flex flex-col items-center justify-center text-center p-8">
-              <ShoppingBag className="h-16 w-16 text-accent" />
-              <h3 className="mt-4 text-2xl font-bold font-headline">Find Your Perfect Match</h3>
+              <ShoppingBag className="h-16 w-16 text-accent mb-4" />
+              <h3 className="text-2xl font-bold font-headline">Find Your Perfect Match</h3>
               <p className="mt-2 text-muted-foreground">Fill out your profile to discover suitable investment products.</p>
             </Card>
           )}

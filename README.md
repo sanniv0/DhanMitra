@@ -1,6 +1,6 @@
-# DhanMitra: Your GenAI Financial Mentor
+# Dhan Mitra: Your GenAI Financial Mentor
 
-DhanMitra is a modern, AI-powered financial wellness platform designed for the Indian market. It empowers users with low to moderate financial literacy to make informed investing decisions through personalized guidance, interactive tools, and a simplified learning hub.
+Dhan Mitra is a modern, AI-powered financial wellness platform designed for the Indian market. It empowers users with low to moderate financial literacy to make informed investing decisions through personalized guidance, interactive tools, and a simplified learning hub.
 
 ## 🌟 Key Features
 
@@ -32,7 +32,7 @@ DhanMitra is a modern, AI-powered financial wellness platform designed for the I
 1. **Clone the repository**:
    ```bash
    git clone <repository-url>
-   cd Fire_Project_DhanMitra
+   cd Fire_Project_ArthaNiti
    ```
 
 2. **Install dependencies**:
@@ -76,9 +76,9 @@ src/
 
 ## 🧠 AI Architecture
 
-DhanMitra uses **Google Genkit** to manage complex AI workflows.
+ArthaNiti uses **Google Genkit** to manage complex AI workflows.
 - **Flows**: Encapsulated business logic for generating plans and recommendations.
-- **Prompts**: Specialized instructions for the "DhanMitra" persona, ensuring a friendly, "elder sibling" tone.
+- **Prompts**: Specialized instructions for the "ArthaNiti" persona, ensuring a friendly, "elder sibling" tone.
 - **Validation**: Zod-based output schemas ensure the AI provides structured, reliable JSON data that the UI can render securely.
 
 ## 🤝 Contributing

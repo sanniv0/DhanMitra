@@ -4,8 +4,8 @@ import { AppShell } from '@/components/layout/app-shell';
 import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
-  title: 'DhanMitra - Your Personal Finance Guide',
-  description: 'Simplify your finances and start your investment journey with DhanMitra.',
+  title: 'Dhan Mitra - Your Personal Finance Guide',
+  description: 'Simplify your finances and start your investment journey with Dhan Mitra.',
 };
 
 export default function RootLayout({
